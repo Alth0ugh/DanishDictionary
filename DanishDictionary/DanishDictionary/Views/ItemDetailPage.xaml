@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DanishDictionary.Views.ItemDetailPage"
+             Title="{Binding Title}"
+             xmlns:converters="clr-namespace:DanishDictionary.Converters">
+
+    <ContentPage.Resources>
+        <converters:ArticleToStringConverter x:Key="articleToStringConverter"/>
+    </ContentPage.Resources>
+
+    <StackLayout Spacing="20" Padding="15">
+        <Label Text="{Binding DanishText}" FontSize="Medium" HorizontalOptions="Center" FontAttributes="Bold"/>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Slovensky:" FontSize="Medium"/>
+            <Label Text="{Binding SlovakText}" FontSize="Medium"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Predložka:" FontSize="Medium"/>
+            <Label Text="{Binding Article, Converter={StaticResource articleToStringConverter}}" FontSize="Medium"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Plurál:" FontSize="Medium"/>
+            <Label Text="{Binding Plural}" FontSize="Medium"/>
+        </StackLayout>
+    </StackLayout>
+    
+</ContentPage>
