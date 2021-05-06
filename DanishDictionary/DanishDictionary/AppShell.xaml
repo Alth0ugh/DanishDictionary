@@ -31,7 +31,7 @@
 
     <TabBar>
         <ShellContent Title="Slovník" Route="AboutPage" ContentTemplate="{DataTemplate local:ItemsPage}" />
-        <ShellContent Title="Testy" ContentTemplate="{DataTemplate local:AboutPage}" />
+        <ShellContent Title="Testy" ContentTemplate="{DataTemplate local:TestsPage}" />
     </TabBar>
 
     <!--

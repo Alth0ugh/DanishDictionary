@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:DanishDictionary.ViewModels"  
              xmlns:model="clr-namespace:DanishDictionary.Models"  
              x:Name="BrowseItemsPage"
-             x:Key="pp">
+             x:Key="pp"
+             >
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add" Command="{Binding AddItemCommand}" />

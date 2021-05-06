@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CarouselPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DanishDictionary.Views.TestsPage"
+             xmlns:pages="clr-namespace:DanishDictionary.Views"
+             Background="White"
+             ItemsSource="{Binding WordPages}">
+    <CarouselPage.ItemTemplate>
+        <DataTemplate>
+            <pages:TestWordPage BindingContext="{Binding .}"/>
+        </DataTemplate>
+    </CarouselPage.ItemTemplate>
+</CarouselPage>
