@@ -96,7 +96,7 @@ namespace DanishDictionary.ViewModels
 
         private async void OnSave()
         {
-            Word newItem = new Word(Guid.NewGuid().ToString())
+            Word newItem = new Word()
             {
                 Danish = DanishText,
                 Slovak = SlovakText,

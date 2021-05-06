@@ -6,15 +6,23 @@ using Xamarin.Forms;
 
 namespace DanishDictionary.ViewModels
 {
-    [QueryProperty(nameof(WordID), nameof(WordID))]
+    [QueryProperty(nameof(Id), nameof(Id))]
     public class ItemDetailViewModel : BaseViewModel
     {
-        private string _wordID;
-        private string _danishText;
-        private string _slovakText;
+        private string _danishText = "";
+        private string _slovakText = "";
         private Articles _article;
-        private string _plural;
-        public string Id { get; set; }
+        private string _plural = "";
+        private int _id;
+        public int Id 
+        {
+            get => _id;
+            set
+            {
+                SetProperty(ref _id, value);
+                LoadItemId(value);
+            }
+        }
 
         public string DanishText
         {
@@ -40,34 +48,15 @@ namespace DanishDictionary.ViewModels
             set => SetProperty(ref _article, value);
         }
 
-        public string WordID
-        {
-            get
-            {
-                return _wordID;
-            }
-            set
-            {
-                _wordID = value;
-                LoadItemId(value);
-            }
-        }
+        public Word DetailWord { get; set; }
 
-        public async void LoadItemId(string wordID)
+        public async void LoadItemId(int wordId)
         {
-            try
-            {
-                var item = await DataStore.GetItemAsync(wordID);
-                Id = item.ID;
-                DanishText = item.Danish;
-                SlovakText = item.Slovak;
-                Article = item.Article;
-                Plural = item.Plural;
-            }
-            catch (Exception)
-            {
-                Debug.WriteLine("Failed to Load Item");
-            }
+            var word = await DataStore.GetItemAsync(wordId);
+            DanishText = word.Danish;
+            SlovakText = word.Slovak;
+            Article = word.Article;
+            Plural = word.Plural;
         }
     }
 }
