@@ -72,7 +72,7 @@ namespace DanishDictionary.ViewModels
             }
             var word = (Word)obj;
             Words.Remove(word);
-            await DataStore.DeleteItemAsync(word.ID);
+            await DataStore.DeleteItemAsync(word);
         }
 
         public void OnAppearing()
@@ -92,7 +92,7 @@ namespace DanishDictionary.ViewModels
                 return;
 
             // This will push the ItemDetailPage onto the navigation stack
-            await Shell.Current.GoToAsync($"{nameof(ItemDetailPage)}?{nameof(ItemDetailViewModel.WordID)}={word.ID}");
+            await Shell.Current.GoToAsync($"{nameof(ItemDetailPage)}?{nameof(ItemDetailViewModel.Id)}={word.ID}");
         }
     }
 }
