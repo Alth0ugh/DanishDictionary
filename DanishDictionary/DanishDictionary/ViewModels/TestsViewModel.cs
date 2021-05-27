@@ -12,49 +12,51 @@ namespace DanishDictionary.ViewModels
 {
     class TestsViewModel : BaseViewModel
     {
-        private CarouselPage basePage;
+        private CarouselPage _basePage;
         public ObservableCollection<TestWordViewModel> WordPages { get; set; }
         public TestsViewModel(CarouselPage page)
         {
-            basePage = page;
+            _basePage = page;
             WordPages = new ObservableCollection<TestWordViewModel>();
             InitTest();
         }
 
         public async void InitTest()
         {
-            var conversion = int.TryParse(await basePage.DisplayPromptAsync("", "Zadajte počet slov v teste", keyboard: Keyboard.Numeric), out int result);
+            var conversion = int.TryParse(await _basePage.DisplayPromptAsync("", "Zadajte počet slov v teste", keyboard: Keyboard.Numeric), out int result);
             if (!conversion)
             {
                 return;
             }
             var words = new List<Word>(await DataStore.GetItemsAsync());
+
             Random rnd = new Random();
             var shuffledWords = words.OrderBy(i => rnd.Next()).ToList();
 
-            for (int i = 0; i < result; i++)
+            for (int i = 1; i <= result; i++)
             {
                 var type = rnd.Next(0, 3);
                 IQuestion question;
-                switch(type)
+                var wordForQuestion = words[i % words.Count];
+                switch (type)
                 {
                     case 0:
-                        question = new ArticleQuestion() { BaseWord = words[i] };
+                        question = new ArticleQuestion() { BaseWord = wordForQuestion };
                         break;
                     case 1:
-                        question = new DanishQuestion() { BaseWord = words[i] };
+                        question = new DanishQuestion() { BaseWord = wordForQuestion };
                         break;
                     case 2:
-                        question = new SlovakQuestion() { BaseWord = words[i] };
+                        question = new SlovakQuestion() { BaseWord = wordForQuestion };
                         break;
                     case 3:
-                        question = new PluralQuestion() { BaseWord = words[i] };
+                        question = new PluralQuestion() { BaseWord = wordForQuestion };
                         break;
                     default:
-                        await basePage.DisplayAlert("Chyba", "Nastala neočakávaná chyba", "OK");
+                        await _basePage.DisplayAlert("Chyba", "Nastala neočakávaná chyba", "OK");
                         return;
                 }
-                var newPage = new TestWordViewModel() { TestQuestion = new ArticleQuestion() { BaseWord = shuffledWords[i] } };
+                var newPage = new TestWordViewModel() { TestQuestion = question };
                 WordPages.Add(newPage);
             }
         }
