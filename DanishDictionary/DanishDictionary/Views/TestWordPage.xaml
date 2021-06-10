@@ -8,7 +8,7 @@
             <Label Text="AAAA"/>
             <Label Text="{Binding TestQuestion.QuestionHeader}"/>
             <Label Text="{Binding TestQuestion.QuestionText}"/>
-            <Entry Placeholder="Zadajte odpoveď"/>
+            <Entry Placeholder="Zadajte odpoveď" Text="{Binding TestQuestion.QuestionAnswer, Mode=OneWayToSource}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

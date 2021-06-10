@@ -7,9 +7,33 @@ namespace DanishDictionary.Models.Questions
 {
     class ArticleQuestion : IQuestion
     {
+        private string _questionAnswer;
+        public string QuestionAnswer 
+        {
+            get => _questionAnswer;
+            set
+            {
+                _questionAnswer = value;
+                CheckAnswer();
+            }
+        }
         public Word BaseWord { get; set; }
+        public bool IsAnswerCorrect { get; private set; }
         public string QuestionHeader => "Doplňte predložku";
 
         public string QuestionText => "? " + BaseWord.Danish;
+
+        private void CheckAnswer()
+        {
+            if (string.IsNullOrWhiteSpace(QuestionAnswer) || BaseWord == null)
+            {
+                return;
+            }
+            if (QuestionAnswer.ToLower() == BaseWord.Article.ToString().ToLower())
+            {
+                IsAnswerCorrect = true;
+            }
+        }
+
     }
 }

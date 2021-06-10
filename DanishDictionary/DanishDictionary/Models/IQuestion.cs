@@ -10,5 +10,7 @@ namespace DanishDictionary.Models
         Word BaseWord { get; set; }
         string QuestionHeader { get; }
         string QuestionText { get; }
+        string QuestionAnswer { get; set; }
+        bool IsAnswerCorrect { get; }
     }
 }

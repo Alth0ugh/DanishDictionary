@@ -7,6 +7,7 @@ using System.Linq;
 using System.Collections.ObjectModel;
 using DanishDictionary.Views;
 using DanishDictionary.Models.Questions;
+using System.Windows.Input;
 
 namespace DanishDictionary.ViewModels
 {
@@ -14,10 +15,14 @@ namespace DanishDictionary.ViewModels
     {
         private CarouselPage _basePage;
         public ObservableCollection<TestWordViewModel> WordPages { get; set; }
+        public bool IsCheckAnswersEnabled { get; set; } = false;
+        public ICommand CheckAnswersCommand { get; set; }
+
         public TestsViewModel(CarouselPage page)
         {
             _basePage = page;
             WordPages = new ObservableCollection<TestWordViewModel>();
+            CheckAnswersCommand = new Command(CheckAnswers);
             InitTest();
         }
 
@@ -59,6 +64,30 @@ namespace DanishDictionary.ViewModels
                 var newPage = new TestWordViewModel() { TestQuestion = question };
                 WordPages.Add(newPage);
             }
+        }
+
+        public void CheckAnswers()
+        {
+            var correctAnswers = 0;
+            var wrongAnswers = 0;
+
+            foreach (var item in WordPages)
+            {
+                if (item.TestQuestion == null)
+                {
+                    return;
+                }
+                if (item.TestQuestion.IsAnswerCorrect == true)
+                {
+                    correctAnswers++;
+                }
+                else
+                {
+                    wrongAnswers++;
+                }    
+            }
+            _basePage.DisplayAlert("Výsledky:", $"Počet správnych odpovedí: {correctAnswers}\nPočet nesprávnych odpovedí: {wrongAnswers}", "OK");
+            Shell.Current.GoToAsync("..");
         }
     }
 }

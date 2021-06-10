@@ -5,6 +5,9 @@
              xmlns:pages="clr-namespace:DanishDictionary.Views"
              Background="White"
              ItemsSource="{Binding WordPages}">
+    <CarouselPage.ToolbarItems>
+        <ToolbarItem Text="Hotovo" Command="{Binding CheckAnswersCommand}" IsEnabled="{Binding IsCheckAnswersEnabled}"/>
+    </CarouselPage.ToolbarItems>
     <CarouselPage.ItemTemplate>
         <DataTemplate>
             <pages:TestWordPage BindingContext="{Binding .}"/>

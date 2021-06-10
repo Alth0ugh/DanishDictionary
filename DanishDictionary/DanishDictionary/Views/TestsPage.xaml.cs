@@ -16,7 +16,12 @@ namespace DanishDictionary.Views
         public TestsPage()
         {
             InitializeComponent();
+        }
+
+        protected override void OnAppearing()
+        {
             BindingContext = new TestsViewModel(this);
+            base.OnDisappearing();
         }
     }
 }
