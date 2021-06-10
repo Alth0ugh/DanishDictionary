@@ -18,12 +18,7 @@
                 <RadioButton Content="et" IsChecked="{Binding IsEtArticle, Mode=TwoWay}" FontSize="Medium"/>
             </StackLayout>
             <Label Text="Plurál" FontSize="Medium"/>
-            <StackLayout Orientation="Horizontal">
-                <RadioButton Content="er" IsChecked="{Binding IsErPlural, Mode=TwoWay}" FontSize="Medium"/>
-                <RadioButton Content="r" IsChecked="{Binding IsRPlural, Mode=TwoWay}" FontSize="Medium"/>
-                <RadioButton Content="iné" IsChecked="{Binding IsDifferentPlural, Mode=TwoWay}" FontSize="Medium"/>
-            </StackLayout>
-            <Entry Text="{Binding DifferentPluralText, Mode=TwoWay}" FontSize="Medium" IsVisible="{Binding IsDifferentPlural}"/>
+            <Entry Text="{Binding PluralText, Mode=TwoWay}" FontSize="Medium"/>
             <StackLayout Orientation="Horizontal">
                 <Button Text="Cancel" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"></Button>
                 <Button Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"></Button>

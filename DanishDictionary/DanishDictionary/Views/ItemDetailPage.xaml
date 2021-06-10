@@ -10,7 +10,7 @@
     </ContentPage.Resources>
 
     <StackLayout Spacing="20" Padding="15">
-        <Label Text="{Binding DanishText}" FontSize="Medium" HorizontalOptions="Center" FontAttributes="Bold"/>
+        <Label Text="{Binding DanishText}" FontSize="30" HorizontalOptions="Center" FontAttributes="Bold"/>
         <StackLayout Orientation="Horizontal">
             <Label Text="Slovensky:" FontSize="Medium"/>
             <Label Text="{Binding SlovakText}" FontSize="Medium"/>

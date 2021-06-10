@@ -13,10 +13,7 @@ namespace DanishDictionary.ViewModels
         private string _slovakText;
         private bool _isEnArticle;
         private bool _isEtArticle;
-        private bool _isErPlural;
-        private bool _isRPlural;
-        private bool _isDifferentPlural;
-        private string _differentPluralText;
+        private string _pluralText;
         private bool _canSave;
 
         public NewItemViewModel()
@@ -35,10 +32,8 @@ namespace DanishDictionary.ViewModels
 
         private bool ValidateSave()
         {
-            var a = _isEnArticle || _isEtArticle;
-            var b = _isErPlural || _isRPlural || _isDifferentPlural;
             return !String.IsNullOrWhiteSpace(_danishText)
-                && !String.IsNullOrWhiteSpace(_slovakText) && (_isEnArticle || _isEtArticle) && ((_isErPlural || _isRPlural) || (_isDifferentPlural && !string.IsNullOrWhiteSpace(_differentPluralText)));
+                && !String.IsNullOrWhiteSpace(_slovakText) && (_isEnArticle || _isEtArticle) && !string.IsNullOrWhiteSpace(_pluralText);
         }
 
         public string DanishText
@@ -63,26 +58,11 @@ namespace DanishDictionary.ViewModels
             get => _isEtArticle;
             set => SetProperty(ref _isEtArticle, value);
         }
-        public bool IsErPlural 
-        {
-            get => _isErPlural;
-            set => SetProperty(ref _isErPlural, value);
-        }
-        public bool IsRPlural 
-        {
-            get => _isRPlural;
-            set => SetProperty(ref _isRPlural, value);
-        }
-        public bool IsDifferentPlural 
-        {
-            get => _isDifferentPlural;
-            set => SetProperty(ref _isDifferentPlural, value);
-        }
 
-        public string DifferentPluralText 
+        public string PluralText 
         {
-            get => _differentPluralText;
-            set => SetProperty(ref _differentPluralText, value);
+            get => _pluralText;
+            set => SetProperty(ref _pluralText, value);
         }
 
         public Command SaveCommand { get; }
@@ -103,18 +83,7 @@ namespace DanishDictionary.ViewModels
                 Article = _isEnArticle ? Articles.En : Articles.Et
             };
 
-            if (_isErPlural)
-            {
-                newItem.Plural = newItem.Danish + "er";
-            }
-            else if (_isRPlural)
-            {
-                newItem.Plural = newItem.Danish + "r";
-            }
-            else
-            {
-                newItem.Plural = _differentPluralText; 
-            }
+            newItem.Plural = _pluralText;
 
             await DataStore.AddItemAsync(newItem);
 
