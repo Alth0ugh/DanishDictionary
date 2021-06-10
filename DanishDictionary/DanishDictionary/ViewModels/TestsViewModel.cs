@@ -15,7 +15,6 @@ namespace DanishDictionary.ViewModels
     {
         private CarouselPage _basePage;
         public ObservableCollection<TestWordViewModel> WordPages { get; set; }
-        public bool IsCheckAnswersEnabled { get; set; } = false;
         public ICommand CheckAnswersCommand { get; set; }
 
         public TestsViewModel(CarouselPage page)

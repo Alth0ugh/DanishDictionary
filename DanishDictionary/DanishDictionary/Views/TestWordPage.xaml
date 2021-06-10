@@ -4,11 +4,20 @@
              x:Class="DanishDictionary.Views.TestWordPage"
              xmlns:converters="clr-namespace:DanishDictionary.Converters">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="AAAA"/>
-            <Label Text="{Binding TestQuestion.QuestionHeader}"/>
-            <Label Text="{Binding TestQuestion.QuestionText}"/>
-            <Entry Placeholder="Zadajte odpoveď" Text="{Binding TestQuestion.QuestionAnswer, Mode=OneWayToSource}"/>
-        </StackLayout>
+        <Grid Margin="10, 50, 10, 10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <StackLayout Grid.Row="0" Grid.Column="0">
+                <Label Text="{Binding TestQuestion.QuestionHeader}" HorizontalOptions="Center" FontSize="30" TextColor="Black"/>
+                <Label Text="{Binding TestQuestion.QuestionText}" HorizontalOptions="Center" FontSize="20"/>
+
+            </StackLayout>
+            <Entry Grid.Row="1" Grid.Column="0" Placeholder="Zadajte odpoveď" Text="{Binding TestQuestion.QuestionAnswer, Mode=OneWayToSource}"/>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
