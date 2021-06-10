@@ -12,74 +12,34 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add" Command="{Binding AddItemCommand}" />
     </ContentPage.ToolbarItems>
-  
+
     <RefreshView x:DataType="local:ItemsViewModel" Command="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
-        <ListView x:Name="listView" ItemsSource="{Binding Words}" SelectedItem="{Binding SelectedWord, Mode=TwoWay}" SelectionMode="Single">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <ViewCell.ContextActions>
-                            <MenuItem x:Name="menuItem" Text="Delete" Command="{Binding Source={x:Reference listView}, Path=BindingContext.DeleteWordCommand}" CommandParameter="{Binding Source={x:Reference menuItem}, Path=BindingContext}"/>
-                        </ViewCell.ContextActions>
-                        <StackLayout Padding="10" x:DataType="model:Word">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0" Text="{Binding Danish}" 
+        <StackLayout>
+            <SearchBar Placeholder="Hľadaj" Text="{Binding SearchText}"/>
+            <ListView x:Name="listView" ItemsSource="{Binding Words}" SelectedItem="{Binding SelectedWord, Mode=TwoWay}" SelectionMode="Single">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem x:Name="menuItem" Text="Delete" Command="{Binding Source={x:Reference listView}, Path=BindingContext.DeleteWordCommand}" CommandParameter="{Binding Source={x:Reference menuItem}, Path=BindingContext}"/>
+                            </ViewCell.ContextActions>
+                            <StackLayout Padding="10" x:DataType="model:Word">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0" Text="{Binding Danish}" 
                             LineBreakMode="NoWrap" 
                             Style="{DynamicResource ListItemTextStyle}" 
                             FontSize="16" />
-                                <Label Grid.Column="1" Text="{Binding Slovak}" FontSize="16" HorizontalOptions="End"/>
-                            </Grid>
-                        </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-                <!--<DataTemplate>
-                    <StackLayout Padding="10" x:DataType="model:Word">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Label Grid.Column="0" Text="aa" 
-                            LineBreakMode="NoWrap" 
-                            Style="{DynamicResource ListItemTextStyle}" 
-                            FontSize="16" />
-                            <Label Grid.Column="1" Text="aa" FontSize="16" HorizontalOptions="End"/>
-                        </Grid>
-                    </StackLayout>
-                </DataTemplate>-->
-            </ListView.ItemTemplate>
-        </ListView>
-        <!--<CollectionView x:Name="ItemsListView"
-                ItemsSource="{Binding Words}"
-                SelectionMode="None">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <StackLayout Padding="10" x:DataType="model:Word">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Label Grid.Column="0" Text="{Binding Danish}" 
-                            LineBreakMode="NoWrap" 
-                            Style="{DynamicResource ListItemTextStyle}" 
-                            FontSize="16" />
-                            <Label Grid.Column="1" Text="{Binding Slovak}" FontSize="16" HorizontalOptions="End"/>
-                        </Grid>
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer 
-                                NumberOfTapsRequired="1"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:ItemsViewModel}}, Path=ItemTapped}"		
-                                CommandParameter="{Binding .}">
-                            </TapGestureRecognizer>
-                        </StackLayout.GestureRecognizers>
-                    </StackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>-->
+                                    <Label Grid.Column="1" Text="{Binding Slovak}" FontSize="16" HorizontalOptions="End"/>
+                                </Grid>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
     </RefreshView>
 </ContentPage>

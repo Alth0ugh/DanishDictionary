@@ -14,6 +14,7 @@ namespace DanishDictionary.Droid
         {
             base.OnCreate(savedInstanceState);
 
+            SetStatusBarColor(Android.Graphics.Color.Rgb(174, 28, 45));
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
