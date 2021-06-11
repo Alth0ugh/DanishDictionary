@@ -6,7 +6,7 @@
              Background="White"
              ItemsSource="{Binding WordPages}">
     <CarouselPage.ToolbarItems>
-        <ToolbarItem Text="Hotovo" Command="{Binding CheckAnswersCommand}"/>
+        <ToolbarItem Text="Done" Command="{Binding CheckAnswersCommand}"/>
     </CarouselPage.ToolbarItems>
     <CarouselPage.ItemTemplate>
         <DataTemplate>

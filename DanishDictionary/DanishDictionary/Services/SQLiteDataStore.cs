@@ -17,13 +17,7 @@ namespace DanishDictionary.Services
             if (_dbConnection == null)
             {
                 _dbConnection = new SQLiteAsyncConnection(FileSystem.AppDataDirectory + "data.db");
-                try
-                {
-                    _dbConnection.CreateTableAsync<Word>().Wait();
-                }
-                catch (Exception e)
-                {
-                }
+                _dbConnection.CreateTableAsync<Word>().Wait();
             }
         }
         public async Task<bool> AddItemAsync(Word word)

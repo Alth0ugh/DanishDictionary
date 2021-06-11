@@ -20,7 +20,7 @@ namespace DanishDictionary.Models.Questions
         }
         public Word BaseWord { get; set; }
 
-        public string QuestionHeader => "Napíšte slovo po slovensky";
+        public string QuestionHeader => "Write word in English";
 
         public string QuestionText => BaseWord.Danish;
 

@@ -19,7 +19,7 @@ namespace DanishDictionary.Models.Questions
         }
         public Word BaseWord { get; set; }
         public bool IsAnswerCorrect { get; private set; }
-        public string QuestionHeader => "Doplňte predložku";
+        public string QuestionHeader => "Fill article";
 
         public string QuestionText => "? " + BaseWord.Danish;
 

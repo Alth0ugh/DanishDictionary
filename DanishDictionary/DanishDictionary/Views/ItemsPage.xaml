@@ -15,7 +15,7 @@
 
     <RefreshView x:DataType="local:ItemsViewModel" Command="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
         <StackLayout>
-            <SearchBar Placeholder="Hľadaj" Text="{Binding SearchText}"/>
+            <SearchBar Placeholder="Search" Text="{Binding SearchText}"/>
             <ListView x:Name="listView" ItemsSource="{Binding Words}" SelectedItem="{Binding SelectedWord, Mode=TwoWay}" SelectionMode="Single">
                 <ListView.ItemTemplate>
                     <DataTemplate>

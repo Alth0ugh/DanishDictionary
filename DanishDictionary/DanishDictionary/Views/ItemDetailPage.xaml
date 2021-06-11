@@ -16,15 +16,15 @@
             <Label Text="{Binding WordType}" FontSize="Medium"/>
         </StackLayout>
         <StackLayout Orientation="Horizontal">
-            <Label Text="Slovensky:" FontSize="Medium"/>
+            <Label Text="English:" FontSize="Medium"/>
             <Label Text="{Binding SlovakText}" FontSize="Medium"/>
         </StackLayout>
         <StackLayout Orientation="Horizontal">
-            <Label Text="Predložka:" FontSize="Medium"/>
+            <Label Text="Article:" FontSize="Medium"/>
             <Label Text="{Binding Article, Converter={StaticResource articleToStringConverter}}" FontSize="Medium"/>
         </StackLayout>
         <StackLayout Orientation="Horizontal">
-            <Label Text="Plurál:" FontSize="Medium"/>
+            <Label Text="Plural:" FontSize="Medium"/>
             <Label Text="{Binding Plural}" FontSize="Medium"/>
         </StackLayout>
     </StackLayout>

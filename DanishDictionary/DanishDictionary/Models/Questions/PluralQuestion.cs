@@ -21,7 +21,7 @@ namespace DanishDictionary.Models.Questions
         }
         public Word BaseWord { get; set; }
 
-        public string QuestionHeader => "Napíšte slovo v pluráli";
+        public string QuestionHeader => "Write word in plural";
 
         public string QuestionText => BaseWord.Danish;
 
