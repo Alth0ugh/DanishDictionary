@@ -9,8 +9,7 @@ namespace DanishDictionary.Models
     {
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
-        [NotNull]
-        public WordTypes WordType { get; set; }
+        public WordTypes WordType { get; set; } = WordTypes.Noun;
         [NotNull]
         public string Danish { get; set; }
         [NotNull]

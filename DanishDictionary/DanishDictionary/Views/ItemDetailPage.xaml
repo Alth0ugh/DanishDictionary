@@ -12,6 +12,10 @@
     <StackLayout Spacing="20" Padding="15">
         <Label Text="{Binding DanishText}" FontSize="30" HorizontalOptions="Center" FontAttributes="Bold"/>
         <StackLayout Orientation="Horizontal">
+            <Label Text="Word type:" FontSize="Medium"/>
+            <Label Text="{Binding WordType}" FontSize="Medium"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
             <Label Text="Slovensky:" FontSize="Medium"/>
             <Label Text="{Binding SlovakText}" FontSize="Medium"/>
         </StackLayout>
