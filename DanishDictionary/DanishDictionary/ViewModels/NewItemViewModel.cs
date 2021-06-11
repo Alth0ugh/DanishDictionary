@@ -15,6 +15,8 @@ namespace DanishDictionary.ViewModels
         private bool _isEtArticle;
         private string _pluralText;
         private bool _canSave;
+        private bool _isNoun;
+        private WordTypes _selectedWordType;
 
         public NewItemViewModel()
         {
@@ -33,7 +35,8 @@ namespace DanishDictionary.ViewModels
         private bool ValidateSave()
         {
             return !String.IsNullOrWhiteSpace(_danishText)
-                && !String.IsNullOrWhiteSpace(_slovakText) && (_isEnArticle || _isEtArticle) && !string.IsNullOrWhiteSpace(_pluralText);
+                && !String.IsNullOrWhiteSpace(_slovakText) && ((SelectedWordType == WordTypes.Noun && (_isEnArticle || _isEtArticle) && !string.IsNullOrWhiteSpace(_pluralText)) ||
+                SelectedWordType != WordTypes.Noun);
         }
 
         public string DanishText
@@ -63,6 +66,22 @@ namespace DanishDictionary.ViewModels
         {
             get => _pluralText;
             set => SetProperty(ref _pluralText, value);
+        }
+
+        public WordTypes SelectedWordType
+        {
+            get => _selectedWordType;
+            set
+            {
+                IsNoun = value == WordTypes.Noun;
+                SetProperty(ref _selectedWordType, value);
+            }
+        }
+
+        public bool IsNoun 
+        {
+            get => _isNoun;
+            set => SetProperty(ref _isNoun, value);
         }
 
         public Command SaveCommand { get; }

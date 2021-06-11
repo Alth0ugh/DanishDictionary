@@ -10,6 +10,8 @@ namespace DanishDictionary.Models
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
         [NotNull]
+        public WordTypes WordType { get; set; }
+        [NotNull]
         public string Danish { get; set; }
         [NotNull]
         public string Slovak { get; set; }
@@ -23,5 +25,18 @@ namespace DanishDictionary.Models
     {
         En,
         Et
+    }
+
+    public enum WordTypes
+    {
+        Noun,
+        Adjective,
+        Pronoun,
+        Numeral,
+        Verb,
+        Adverb,
+        Preposition,
+        Conjunction,
+        Interjection
     }
 }

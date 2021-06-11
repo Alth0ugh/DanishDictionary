@@ -5,20 +5,30 @@
              Shell.PresentationMode="ModalAnimated"
              Title="New Item"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:extensions="clr-namespace:DanishDictionary.Extension"
+             xmlns:models="clr-namespace:DanishDictionary.Models"
+             xmlns:converter="clr-namespace:DanishDictionary.Converters"
              ios:Page.UseSafeArea="true">
+    <ContentPage.Resources>
+        <converter:EmptyConverter x:Key="emptyConverter"/>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout Spacing="3" Padding="15">
+            <Label Text="Typ slova" FontSize="Medium"/>
+            <Picker ItemsSource="{extensions:EnumBinding Value={x:Type models:WordTypes}}" SelectedItem="{Binding SelectedWordType}"/>
+            
             <Label Text="Dánsky" FontSize="Medium" />
             <Entry Text="{Binding DanishText, Mode=TwoWay}" FontSize="Medium" />
             <Label Text="Slovensky" FontSize="Medium" />
             <Entry Text="{Binding SlovakText, Mode=TwoWay}" FontSize="Medium" Margin="0" />
-            <Label Text="Predložka" FontSize="Medium"/>
-            <StackLayout Orientation="Horizontal">
+            <Label Text="Predložka" FontSize="Medium" IsVisible="{Binding IsNoun}"/>
+            <StackLayout Orientation="Horizontal" IsVisible="{Binding IsNoun}">
                 <RadioButton Content="en" IsChecked="{Binding IsEnArticle, Mode=TwoWay}" FontSize="Medium"/>
                 <RadioButton Content="et" IsChecked="{Binding IsEtArticle, Mode=TwoWay}" FontSize="Medium"/>
             </StackLayout>
-            <Label Text="Plurál" FontSize="Medium"/>
-            <Entry Text="{Binding PluralText, Mode=TwoWay}" FontSize="Medium"/>
+            <Label Text="Plurál" FontSize="Medium" IsVisible="{Binding IsNoun}"/>
+            <Entry Text="{Binding PluralText, Mode=TwoWay}" FontSize="Medium" IsVisible="{Binding IsNoun}"/>
+            
             <StackLayout Orientation="Horizontal">
                 <Button Text="Cancel" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"></Button>
                 <Button Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"></Button>
