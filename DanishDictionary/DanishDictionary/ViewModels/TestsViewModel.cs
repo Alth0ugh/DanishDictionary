@@ -27,7 +27,7 @@ namespace DanishDictionary.ViewModels
 
         public async void InitTest()
         {
-            var conversion = int.TryParse(await _basePage.DisplayPromptAsync("", "Zadajte počet slov v teste", keyboard: Keyboard.Numeric), out int result);
+            var conversion = int.TryParse(await _basePage.DisplayPromptAsync("", "Enter number of questions in the test", keyboard: Keyboard.Numeric), out int result);
             if (!conversion)
             {
                 return;

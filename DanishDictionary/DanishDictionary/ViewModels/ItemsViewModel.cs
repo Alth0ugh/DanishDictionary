@@ -118,7 +118,7 @@ namespace DanishDictionary.ViewModels
             {
                 if (selected[i])
                 {
-                    newWords.Add(Words[i]);
+                    newWords.Add(AllWords[i]);
                 }
             }
             Words = new ObservableCollection<Word>(newWords);
