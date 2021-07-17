@@ -3,29 +3,38 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DanishDictionary.Views.ItemDetailPage"
              Title="{Binding Title}"
+             xmlns:models="clr-namespace:DanishDictionary.Models"
              xmlns:converters="clr-namespace:DanishDictionary.Converters">
 
     <ContentPage.Resources>
         <converters:ArticleToStringConverter x:Key="articleToStringConverter"/>
     </ContentPage.Resources>
 
-    <StackLayout Spacing="20" Padding="15">
-        <Label Text="{Binding DanishText}" FontSize="30" HorizontalOptions="Center" FontAttributes="Bold"/>
-        <StackLayout Orientation="Horizontal">
+    <StackLayout>
+        <Label Text="{Binding DanishText}" Margin="10" FontSize="30" HorizontalOptions="Center" FontAttributes="Bold"/>
+        <StackLayout Orientation="Horizontal" Margin="10">
             <Label Text="Word type:" FontSize="Medium"/>
             <Label Text="{Binding WordType}" FontSize="Medium"/>
         </StackLayout>
-        <StackLayout Orientation="Horizontal">
+        <StackLayout Orientation="Horizontal" Margin="10">
             <Label Text="English:" FontSize="Medium"/>
             <Label Text="{Binding SlovakText}" FontSize="Medium"/>
         </StackLayout>
-        <StackLayout Orientation="Horizontal">
-            <Label Text="Article:" FontSize="Medium"/>
-            <Label Text="{Binding Article, Converter={StaticResource articleToStringConverter}}" FontSize="Medium"/>
-        </StackLayout>
-        <StackLayout Orientation="Horizontal">
-            <Label Text="Plural:" FontSize="Medium"/>
-            <Label Text="{Binding Plural}" FontSize="Medium"/>
+        <StackLayout IsVisible="False">
+            <StackLayout.Triggers>
+                <DataTrigger TargetType="StackLayout" Binding="{Binding WordType}" Value="{x:Static models:WordTypes.Noun}">
+                    <Setter Property="IsVisible" Value="True"/>
+                </DataTrigger>
+            </StackLayout.Triggers>
+            
+            <StackLayout Orientation="Horizontal" Margin="10">
+                <Label Text="Article:" FontSize="Medium"/>
+                <Label Text="{Binding Article, Converter={StaticResource articleToStringConverter}}" FontSize="Medium"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Margin="10">
+                <Label Text="Plural:" FontSize="Medium"/>
+                <Label Text="{Binding Plural}" FontSize="Medium"/>
+            </StackLayout>
         </StackLayout>
     </StackLayout>
     

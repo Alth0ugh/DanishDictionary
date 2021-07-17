@@ -11,7 +11,7 @@ namespace DanishDictionary.ViewModels
     {
         private string _danishText = "";
         private string _slovakText = "";
-        private Articles _article;
+        private Articles? _article;
         private string _plural = "";
         private int _id;
         public int Id 
@@ -42,10 +42,17 @@ namespace DanishDictionary.ViewModels
             set => SetProperty(ref _plural, value);
         }
 
-        public Articles Article 
+        public Articles? Article 
         {
             get => _article;
             set => SetProperty(ref _article, value);
+        }
+
+        private WordTypes _wordType;
+        public WordTypes WordType 
+        {
+            get => _wordType;
+            set => SetProperty(ref _wordType, value);
         }
 
         public Word DetailWord { get; set; }
@@ -55,6 +62,7 @@ namespace DanishDictionary.ViewModels
             var word = await DataStore.GetItemAsync(wordId);
             DanishText = word.Danish;
             SlovakText = word.Slovak;
+            WordType = word.WordType;
             Article = word.Article;
             Plural = word.Plural;
         }

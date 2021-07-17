@@ -9,15 +9,14 @@ namespace DanishDictionary.Models
     {
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
+        [NotNull]
         public WordTypes WordType { get; set; } = WordTypes.Noun;
         [NotNull]
         public string Danish { get; set; }
         [NotNull]
         public string Slovak { get; set; }
-        [NotNull]
-        public string Plural { get; set; }
-        [NotNull]
-        public Articles Article { get; set; }
+        public string Plural { get; set; } = null;
+        public Articles? Article { get; set; } = null;
     }
 
     public enum Articles

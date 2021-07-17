@@ -99,7 +99,8 @@ namespace DanishDictionary.ViewModels
             {
                 Danish = DanishText,
                 Slovak = SlovakText,
-                Article = _isEnArticle ? Articles.En : Articles.Et
+                Article = _isEnArticle ? Articles.En : Articles.Et,
+                WordType = SelectedWordType
             };
 
             newItem.Plural = _pluralText;
