@@ -8,5 +8,6 @@ namespace DanishDictionary.ViewModels
     class TestWordViewModel : BaseViewModel
     {
         public IQuestion TestQuestion { get; set; }
+        public int ID { get; set; }
     }
 }

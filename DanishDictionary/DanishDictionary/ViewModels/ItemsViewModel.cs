@@ -132,9 +132,10 @@ namespace DanishDictionary.ViewModels
         async void OnItemSelected(Word word)
         {
             if (word == null)
+            {
                 return;
+            }
 
-            // This will push the ItemDetailPage onto the navigation stack
             await Shell.Current.GoToAsync($"{nameof(ItemDetailPage)}?{nameof(ItemDetailViewModel.Id)}={word.ID}");
         }
     }
