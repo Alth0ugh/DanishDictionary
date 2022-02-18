@@ -1,21 +1,20 @@
 # Sudoku Solver
 
 ## Aim of the project
-This project was developed as a final project in the first semester of university.
+This application was developed to help people who self-study Danish language to keep track of the vocabulary they already learned and to practise with randomly generated tests.
 
-## The problem of solving sudoku
-Sudoku is an **exact cover** problem, meaning that in order to solve sudoku correctly a set of constraints must by satisfied under the condition that each constraint is satisfied exactly once. These constraints for 9x9 sudoku are:
-1. Each square must be filled with exactly one number.
-2. In each row there must be each number from 1 to 9 exactly once.
-3. In each column there must be each number from 1 to 9 exactly once.
-4. In each block of 3x3 there must be each number from 1 to 9 exactly once.
+## Storing the words
+Words stored in the app are saved on a local storage of the phone as SQLite database.
 
-## Algorithm X
-Algorithm X is used to find an exact cover for a given sudoku. When an exact cover is found, then a solution which satisfies all constraints is found.
+## Dictionary tab
+User can add and search the words they learned here.
 
-## Dancing Links
-Dancing Links is a technique used to represent a table used by Algorithm X. Instead of using 2D array, linked lists are used. The main advantage of this approach is that for every cell it is easy to find the nearest neighbouring cell containing 1 because every cell contains a reference to nearest neighbouring cell containing 1. Also by altering links in a column or in a row it is easy to delete or "undelete" any column or row from the table.
+![1](https://user-images.githubusercontent.com/58339014/154729640-e307b119-982b-4d7d-be66-48a52b641cc4.png)
+![2](https://user-images.githubusercontent.com/58339014/154729818-adc7ecde-450b-4122-890e-68e931fe6426.png)
 
-## Modes of the application
-1. Application has a mode called **Sudoku Solver** which takes an incomplete sudoku as an input and returns a solution (if there is one).
-2. Mode **Sudoku Helper** is supposed to guide the user through the solution. The user can either check the partial solution or if they do not know how to continue with the solution, they can request a hint.
+## Tests tab
+User can generate a test to practise their skills.
+
+![3](https://user-images.githubusercontent.com/58339014/154731681-17b28713-d43a-4dee-b7c0-84092f04b2eb.png)
+![4](https://user-images.githubusercontent.com/58339014/154731691-21302920-4eaa-4f0d-8cde-a321f9cd7aa1.png)
+![5](https://user-images.githubusercontent.com/58339014/154731085-22dd088b-2274-4e16-95b6-a98f5986be43.png)
